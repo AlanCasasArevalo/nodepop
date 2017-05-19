@@ -8,26 +8,41 @@ mongoose.Promise = global.Promise;
 const ProductSchema = mongoose.Schema({
 	name:{
 		type:String,
-		index:true
+		index:true,
+		lowercase:true,
+		required: true
 	},
 	sell:{
 		type:Boolean,
-		index:true
+		index:true,
+		required: true
 	},
 	picture:String,
 	price:{
 		type:Number,
-		index:true
+		index:true,
+		required: true
 	},
-	category: {
-		type:String, 
+	tag: {
+		type:[String], 
+		index: true,
+		lowercase:true,
 		enum: [
 			"work", "lifestyle", "motor", "mobile"
 		]
 	}
 });
 
-const Product = mongoose.model("Product", ProductSchema);
+ProductSchema.statics.list = function (filter, limit, skip, fields, sort, callback) {
+	const query = Product.find(filter);
+	query.limit(limit);
+	query.skip(skip);
+	query.sort(sort);
+	query.select(fields);
+	query.exec(callback);
+};
+
+var Product = mongoose.model("Product", ProductSchema);
 
 // Exportamos los esquemas
 module.exports = Product;
