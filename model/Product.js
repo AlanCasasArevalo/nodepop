@@ -1,25 +1,24 @@
 "use strict";
 const mongoose = require("mongoose");
-const mongSchema = mongoose.Schema;
 
 // Le decimos a mongoose que las promesas que vamos usar son globales
 mongoose.Promise = global.Promise;
 
 // Creamos los esquemas que vamos a usar 
-const ProductSchema = mongSchema({
+const ProductSchema = mongoose.Schema({
 	name:{
-        type:String,
-        index:true
-    },
-    sell:{
-        type:Boolean,
-        index:true
-    },
-    picture:String,
+		type:String,
+		index:true
+	},
+	sell:{
+		type:Boolean,
+		index:true
+	},
+	picture:String,
 	price:{
-        type:Number,
-        index:true
-    },
+		type:Number,
+		index:true
+	},
 	category: {
 		type:String, 
 		enum: [
@@ -31,5 +30,5 @@ const ProductSchema = mongSchema({
 const Product = mongoose.model("Product", ProductSchema);
 
 // Exportamos los esquemas
-module.exports = Product
+module.exports = Product;
 

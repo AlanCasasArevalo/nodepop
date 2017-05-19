@@ -7,8 +7,7 @@ var bodyParser = require("body-parser");
 
 require("./lib/connectMongoose");
 require("./model/Product");
-
-
+require("./model/User");
 
 var app = express();
 
@@ -26,6 +25,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", require("./routes/index"));
 app.use("/api/products", require("./routes/api/products"));
+app.use("/api/users", require("./routes/api/users"));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
