@@ -9,6 +9,7 @@ api.get("/", (req, res, next) => {
 	const name = req.query.name;
 	const tag = req.query.tag;
 	const sell = req.query.sell;
+	const price = req.query.price;
 
 	const limit = parseInt(req.query.limit);
 	const skip = parseInt(req.query.skip);
@@ -19,13 +20,31 @@ api.get("/", (req, res, next) => {
 
 	if (name){
 		filter.name = {$regex: name};
-		console.log(filter);
 	}
+
 	if (tag){
 		filter.tag = tag;
 	}
+	
 	if (sell){
 		filter.sell = sell;
+	}
+
+	if (price){
+		if (price < 0){
+			return res.json({
+				success:false, 
+				message:"El precio tiene que ser mayor que 0, no puede ser numero negativo"}
+			);
+		}else if(price <= 10){
+			filter.price = {$lt:10};
+		}else if(price >= 10 && price <= 50){
+			filter.price = {$gte:10, $lte:50};
+		}else if(price <= 50){
+			filter.price = {$lte:50};
+		}else if(price >= 100){
+			filter.price = {$gte:100};
+		}		
 	}
 
 	Product.list(filter, limit, skip, fields, sort, (err, products) => {
