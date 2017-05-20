@@ -3,8 +3,9 @@
 const express = require("express");
 const api = express.Router();
 const Product = require("../../model/Product");
+const auth = require("../../middlewares/auth");
 
-api.get("/", (req, res, next) => {
+api.get("/", auth, (req, res, next) => {
     
 	const name = req.query.name;
 	const tag = req.query.tag;
@@ -60,6 +61,7 @@ api.get("/", (req, res, next) => {
 	});   
 });
 
+/*
 api.get("/tag",(req,res, next) => {
 
 	Product.find().exec((err, tags) => {
@@ -69,8 +71,9 @@ api.get("/tag",(req,res, next) => {
 	});
 	
 });
+*/
 
-api.post("/", (req, res,next) => {
+api.post("/", auth , (req, res,next) => {
 	console.log(req.body);
 	const product = new Product(req.body);
 	product.save((err, productSaved) => {
@@ -84,7 +87,7 @@ api.post("/", (req, res,next) => {
 	});
 });
 
-api.put("/:name", (req, res, next) => {
+api.put("/:name", auth , (req, res, next) => {
 	const name = req.params.name;
 
 	Product.update({name:name}, req.body, (err, productAct) => {
@@ -97,7 +100,7 @@ api.put("/:name", (req, res, next) => {
 	});
 });
 
-api.delete("/:name", (req, res, next) => {
+api.delete("/:name", auth, (req, res, next) => {
 	const name = req.params.name;
 
 	Product.remove({name: name}, (err, productDel) => {
