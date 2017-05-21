@@ -87,8 +87,8 @@ api.post("/", auth , (req, res,next) => {
 	});
 });
 
-api.put("/:name", auth , (req, res, next) => {
-	const name = req.params.name;
+api.put("/:id", auth , (req, res, next) => {
+	const name = req.params.id;
 
 	Product.update({name:name}, req.body, (err, productAct) => {
 		if(err) return next(err);
@@ -100,8 +100,8 @@ api.put("/:name", auth , (req, res, next) => {
 	});
 });
 
-api.delete("/:name", auth, (req, res, next) => {
-	const name = req.params.name;
+api.delete("/:id", auth, (req, res, next) => {
+	const name = req.params.id;
 
 	Product.remove({name: name}, (err, productDel) => {
 		if(err) return next(err);
