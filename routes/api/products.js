@@ -43,7 +43,7 @@ api.get("/", auth, (req, res, next) => {
 			filter.price = {$gte:10, $lte:50};
 		}else if(price <= 50){
 			filter.price = {$lte:50};
-		}else if(price >= 100){
+		}else if(price >= 50){
 			filter.price = {$gte:100};
 		}		
 	}
@@ -101,9 +101,9 @@ api.put("/:id", auth , (req, res, next) => {
 });
 
 api.delete("/:id", auth, (req, res, next) => {
-	const name = req.params.id;
+	const id = req.params.id;
 
-	Product.remove({name: name}, (err, productDel) => {
+	Product.remove({_id: id}, (err, productDel) => {
 		if(err) return next(err);
 
 		res.json({

@@ -19,15 +19,41 @@ app.set("port", port);
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+const cluster = require("cluster");
+
+if(cluster.isMaster){
+
+	const numCPUs = require("os").cpus().length;
+
+	console.log("Tenemos %s nucleos funcionando", numCPUs);
+
+	for(let i=0;i<numCPUs; i++){
+		cluster.fork();
+	}
+
+	cluster.on("online", (worker) => {
+		console.log("El worker" + worker.process.pid + " esta online");
+	});
+
+	cluster.on("exit", (worker, code, signal) => {
+		console.log("El worker " + worker.process.pid + " ha muerto con codigo: " + code + " y la señal " + signal);
+		console.log("Creando un nuevo worker");
+		cluster.fork;
+	});
+
+}else{
+
+	var server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
  */
+	server.listen(port);
+	server.on("error", onError);
+	server.on("listening", onListening);
 
-server.listen(port);
-server.on("error", onError);
-server.on("listening", onListening);
+}
+
 
 /**
  * Normalize a port into a number, string, or false.

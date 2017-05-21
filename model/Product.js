@@ -27,6 +27,7 @@ const ProductSchema = mongoose.Schema({
 		type:[String], 
 		index: true,
 		lowercase:true,
+		required:true,
 		enum: [
 			"work", "lifestyle", "motor", "mobile"
 		]
