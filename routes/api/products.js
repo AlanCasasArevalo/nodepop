@@ -52,7 +52,6 @@ api.get("/", auth, (req, res, next) => {
 		if(err){
 			next(err);
 			return;
-            
 		}
 		res.json({
 			success:true,

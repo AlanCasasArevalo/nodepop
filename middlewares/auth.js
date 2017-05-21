@@ -4,7 +4,7 @@ const services = require("../services");
 
 function isAuth(req, res, next) {
 	if (!req.headers.authorization){
-		return res.json({success: false, message: "NO PUEDES PASAR"});
+		return res.json({success: false, message: "Como decia Gandalf:  NO PUEDES PASAR"});
 	}
 
 	const token = req.headers.authorization.split(" ")[1];
