@@ -1,2 +1,13 @@
-Aplicacion API REST para modulo de Node de Bootcamp
-Toda la documentacion de la aplicacion esta en la carpeta Doc. En el archivo Funcionamiento API REST CRUD en formato PDF
+# Aplicacion Nodepop
+Esta es una API para iOS/Android 
+
+##Carga de la Aplicacion
+
+###Instalar las dependencias de npm guardadas en el package.json
+npm install
+
+
+
+
+
+
