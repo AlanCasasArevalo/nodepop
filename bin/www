@@ -27,6 +27,7 @@ if(cluster.isMaster){
 
 	console.log("Tenemos %s nucleos funcionando", numCPUs);
 
+
 	for(let i=0;i<numCPUs; i++){
 		cluster.fork();
 	}
