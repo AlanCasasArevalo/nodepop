@@ -98,6 +98,11 @@ Resultado de la peticion
     ]
 }
 
+### POST url/api/products
+Para publicar anuncios hay campos qeu son requeridos y sin ellos no se podra publicar el nuevo anuncio
+
+
+
 
 
 

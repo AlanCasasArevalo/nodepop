@@ -1,0 +1,29 @@
+
+a:link{
+    color: cyan
+}
+
+a:visited{
+    color: crimson
+}
+
+
+p.enum{
+    font-size: 20px;
+}
+
+p.json{
+    font-style: italic
+}
+
+ul#requeridos{
+    color: red
+}
+
+
+
+
+
+
+
+
