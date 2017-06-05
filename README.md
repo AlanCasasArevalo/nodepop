@@ -1,3 +1,10 @@
+# URL de AWS donde se encuentra la practica  
+## DNS
+ec2-34-201-200-155.compute-1.amazonaws.com
+
+## IP publica
+34.201.200.155
+
 # Aplicacion Nodepop
 Esta es una API para iOS/Android 
 
