@@ -1,7 +1,7 @@
 # Aplicacion Nodepop
 Esta es una API para iOS/Android 
 
-###Instalar las dependencias de npm guardadas en el package.json
+Instalar las dependencias de npm guardadas en el package.json
 npm install
 
 ## Iniciar la aplicacion
@@ -11,12 +11,13 @@ npm start (Inicia directamente en modo cluster)
 npm run dev (incluye nodemon y habria que tener instalado nodemon) 
 
 ## Configurar la aplicacion
-Para configurar el puerto de la aplicacion modificar el archivo www dentro de la carpeta /bin 
+Para configurar el puerto de la aplicacion modificar el archivo www dentro de la carpeta /bin.
+
 Para configurar la conexion a la base de datos modificar el archvio connectMongoose.js en la carpeta /lib
 
 ## Configurar seguridad
 Esta aplicacion usa para sus usuarios la seguridad JWT, lo que implica que para entrar en la aplicacion y poder usarla tiene que registrarse previamente. Para entrar en dicho registro hemos de acceder mediante la url/api/users/signup
-Recibiremos un token en la respuesta del servidor en modo json:
+Recibiremos un token en la respuesta del servidor en modo json: \n
 {
     "token" : "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImlhdCI6MTQ5NjY0OTA4MCwiZXhwIjoxNDk3ODU4NjgwfQ._w12Re6i22P44CHXjpGqU8aZrTMr0YiQjrmAul8biKg"
 }
