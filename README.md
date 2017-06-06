@@ -98,13 +98,16 @@ Resultado de la peticion
     ]
 }
 
-### POST url/api/products
-Para publicar anuncios hay campos qeu son requeridos y sin ellos no se podra publicar el nuevo anuncio
+##Publicacion de anuncios
 
+###POST url/api/products
 
+Para poder publicar anuncios nuevos a parte de estar registrados tenemos que pasar en el body los siguientes campos obligatorios:
 
-
-
+name
+sell
+price
+tag
 
 
 
